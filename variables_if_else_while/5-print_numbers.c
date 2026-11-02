@@ -1,12 +1,4 @@
-#include <stdio.h>
 
-/**
- * main - prints all single digit numbers
- *
- * Return: Always 0 (Success)
- */
-int main(void)
-{
     int number;
 
     number = 0;
@@ -20,4 +12,5 @@ int main(void)
     putchar('\n');
 
     return (0);
-}
+:%s/^    /\t/g}
+~                         
