@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 /**
- * main - Simple calculator with basic operations
+ * main - Simple calculator with four operations
  *
- * Return: 0 on success
+ * Return: 0 on success, 1 on input error
  */
 int main(void)
 {
 	int choice;
-	int a, b;
+	double a, b, result;
 
 	printf("Simple Calculator\n");
 
@@ -37,25 +37,33 @@ int main(void)
 			continue;
 		}
 
-		if (choice >= 1 && choice <= 3)
+		printf("A: ");
+		fflush(stdout);
+		if (scanf("%lf", &a) != 1)
+			return (1);
+
+		printf("B: ");
+		fflush(stdout);
+		if (scanf("%lf", &b) != 1)
+			return (1);
+
+		if (choice == 1)
+			result = a + b;
+		else if (choice == 2)
+			result = a - b;
+		else if (choice == 3)
+			result = a * b;
+		else
 		{
-			printf("A: ");
-			fflush(stdout);
-			if (scanf("%d", &a) != 1)
-				return (1);
-
-			printf("B: ");
-			fflush(stdout);
-			if (scanf("%d", &b) != 1)
-				return (1);
-
-			if (choice == 1)
-				printf("Result: %d\n", a + b);
-			else if (choice == 2)
-				printf("Result: %d\n", a - b);
-			else
-				printf("Result: %d\n", a * b);
+			if (b == 0)
+			{
+				printf("Error: division by zero\n");
+				continue;
+			}
+			result = a / b;
 		}
+
+		printf("Result: %g\n", result);
 	}
 
 	return (0);
